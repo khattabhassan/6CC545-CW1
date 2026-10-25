@@ -1,10 +1,10 @@
 # Weekly evidence record
 
-Student number:
-Week:w
-Repository URL:
-Immutable tag:
-Commit hash:
+Student number:100854079
+Week:2
+Repository URL:https://github.com/khattabhassan/6CC545-CW1/tree/main/source
+Immutable tag:04f774e88f4ffafaed44aabb3acf04276ef5499e
+Commit hash:04f774e88f4ffafaed44aabb3acf04276ef5499e
 Go version / OS:
 
 ## Commands actually executed
