@@ -1,0 +1,13 @@
+PS C:\Users\L\Downloads\6CC545\source> go test ./internal/httpapi -run "^TestWeek02_" -v -count=1
+testing: warning: no tests to run
+PASS
+ok      example.edu/6cc545/cw1/internal/httpapi 0.022s [no tests to run]
+PS C:\Users\L\Downloads\6CC545\source> go test ./... -count=1 -timeout 20s
+?       example.edu/6cc545/cw1/cmd/node [no test files]
+?       example.edu/6cc545/cw1/cmd/request      [no test files]
+ok      example.edu/6cc545/cw1/examples/firstfunction   0.021s
+ok      example.edu/6cc545/cw1/internal/app     0.028s
+ok      example.edu/6cc545/cw1/internal/config  0.021s
+ok      example.edu/6cc545/cw1/internal/httpapi 0.024s
+PS C:\Users\L\Downloads\6CC545\source> go vet ./...
+PS C:\Users\L\Downloads\6CC545\source>
