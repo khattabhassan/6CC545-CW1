@@ -23,7 +23,14 @@ func ErrorJSON(w http.ResponseWriter, code int, label string) {
 
 func Health(nodeID string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// TODO W01_HEALTH: implement the contract described in TASKS.md.
-		ErrorJSON(w, http.StatusNotImplemented, "TODO W01_HEALTH")
+		if r.Method != http.MethodGet {
+			w.Header().Set("Allow", http.MethodGet) // must come BEFORE the status is written
+			ErrorJSON(w, http.StatusMethodNotAllowed, "method_not_allowed")
+			return
+		}
+		WriteJSON(w, http.StatusOK, map[string]string{
+			"node_id": nodeID,
+			"status":  "ok",
+		})
 	}
 }

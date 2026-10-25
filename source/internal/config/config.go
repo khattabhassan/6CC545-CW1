@@ -1,7 +1,6 @@
 package config
 
 import (
-	"errors"
 	"flag"
 	"fmt"
 	"io"
@@ -61,6 +60,22 @@ func ValidAddress(s string) bool {
 }
 
 func (c Config) Validate() error {
-	// TODO W01_CONFIG: implement the contract described in TASKS.md.
-	return errors.New("TODO W01_CONFIG: validate configuration")
+	if !ValidID(c.ID) {
+		return fmt.Errorf("invalid id %q: use 1-32 letters, digits, '_' or '-'", c.ID)
+	}
+	if !ValidAddress(c.HTTP) {
+		return fmt.Errorf("invalid http address %q: need a loopback host:port such as 127.0.0.1:8081", c.HTTP)
+	}
+	if c.Timeout <= 0 || c.Timeout > 30*time.Second {
+		return fmt.Errorf("invalid timeout %v: must be greater than 0 and at most 30s", c.Timeout)
+	}
+	optional := []struct{ name, value string }{
+		{"tcp", c.TCP}, {"udp", c.UDP}, {"grpc", c.GRPC},
+	}
+	for _, o := range optional {
+		if o.value != "" && !ValidAddress(o.value) {
+			return fmt.Errorf("invalid %s address %q: leave empty or use a loopback host:port", o.name, o.value)
+		}
+	}
+	return nil
 }
