@@ -1,0 +1,29 @@
+C:\Users\L\Downloads\6CC545\source>go test ./... -run "^TestSmoke_
+?       example.edu/6cc545/cw1/cmd/node [no test files]
+?       example.edu/6cc545/cw1/cmd/request      [no test files]
+ok      example.edu/6cc545/cw1/examples/firstfunction   0.030s
+ok      example.edu/6cc545/cw1/internal/app     0.024s [no tests to run]
+ok      example.edu/6cc545/cw1/internal/config  0.025s
+ok      example.edu/6cc545/cw1/internal/httpapi 0.031s
+
+C:\Users\L\Downloads\6CC545\source>go test ./... -count=1 -timeout 20s
+?       example.edu/6cc545/cw1/cmd/node [no test files]
+?       example.edu/6cc545/cw1/cmd/request      [no test files]
+ok      example.edu/6cc545/cw1/examples/firstfunction   0.024s
+--- FAIL: TestWeek01_OccupiedPort (0.00s)
+    app_test.go:23: want clear bind error, got TODO W01_CONFIG: validate configuration
+--- FAIL: TestWeek01_CancelledLifecycle (0.00s)
+    app_test.go:37: TODO W01_CONFIG: validate configuration
+FAIL
+FAIL    example.edu/6cc545/cw1/internal/app     0.028s
+--- FAIL: TestWeek01_Config (0.00s)
+    config_test.go:17: valid configuration rejected: TODO W01_CONFIG: validate configuration
+FAIL
+FAIL    example.edu/6cc545/cw1/internal/config  0.027s
+--- FAIL: TestWeek01_Health (0.00s)
+    health_test.go:29: incorrect health: 501 {"error":"TODO W01_HEALTH"}
+--- FAIL: TestWeek01_HealthWrongMethod (0.00s)
+    health_test.go:40: want 405 got 501
+FAIL
+FAIL    example.edu/6cc545/cw1/internal/httpapi 0.026s
+FAIL
